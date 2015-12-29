@@ -1,0 +1,44 @@
+{
+  "name": "through-batch",
+  "version": "0.1.0",
+  "author": {
+    "name": "Trygve Lie",
+    "email": "post@trygve-lie.com"
+  },
+  "description": "Transform stream that compare each object in the stream with objects in an array of objects to find differences",
+  "main": "./lib/batch.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:trygve-lie/through-batch.git"
+  },
+  "keywords": [
+    "stream",
+    "through",
+    "compare"
+  ],
+  "scripts": {
+    "pretest": "eslint ./lib/*.js ./test/*.js",
+    "test": "tap test/*.js"
+  },
+  "contributors": [
+    {
+      "name": "Trygve Lie",
+      "email": "post@trygve-lie.com"
+    }
+  ],
+  "engines": {
+    "node": "4.x"
+  },
+  "bugs": {
+    "url": "https://github.com/trygve-lie/through-batch/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "readable-stream": "2.0.5"
+  },
+  "devDependencies": {
+    "concat-stream": "1.5.1",
+    "eslint": "1.10.3",
+    "tap": "2.3.2"
+  }
+}
