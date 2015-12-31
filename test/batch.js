@@ -2,7 +2,6 @@
 
 const   stream  = require('stream'),
         tap     = require('tap'),
-        concat  = require('concat-stream'),
         batch   = require('../');
 
 
@@ -15,24 +14,6 @@ const sourceStream = (arr) => {
             });
             this.push(null);
         }
-    });
-}
-
-
-const transformStream = (fn) => {
-    return new stream.Transform({
-        objectMode : true,
-
-        transform: function (obj, encoding, next) {
-            fn(obj)
-            this.push(obj);
-            next();
-        },
-
-        flush: function (done) {
-            done();
-        }
-
     });
 }
 
@@ -52,10 +33,26 @@ const sourceArray = [
 
 
 
-tap.test('compare array is empty - result should hold 3 added objects', (t) => {
-    sourceStream(sourceArray).pipe(batch(4)).pipe(transformStream((arr) => {
-        t.equal(arr.length, 4)
-    })).pipe(concat((result) => {
-        t.end();
-    }));
+tap.test('source array with 10 objects, batching size is 4 - result should write 3 arrays', (t) => {
+
+    var count = 0;
+
+    sourceStream(sourceArray)
+        .pipe(batch(4))
+        .pipe(new stream.Writable({
+            objectMode : true,
+            write: function(chunk, encoding, next) {
+
+                if (count === 2) {
+                    t.equal(chunk.length, 2);
+                    t.end();
+                    return;
+                } 
+
+                t.equal(chunk.length, 4);
+                count++;
+                next()
+            }
+        }));
+
 });
