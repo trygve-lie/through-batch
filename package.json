@@ -5,7 +5,7 @@
     "name": "Trygve Lie",
     "email": "post@trygve-lie.com"
   },
-  "description": "Transform stream that compare each object in the stream with objects in an array of objects to find differences",
+  "description": "Transform stream that buffer up object in the stream and pushes the buffers as batches further down the stream",
   "main": "./lib/batch.js",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "keywords": [
     "stream",
     "through",
-    "compare"
+    "batch"
   ],
   "scripts": {
     "pretest": "eslint ./lib/*.js ./test/*.js",
