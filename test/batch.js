@@ -47,7 +47,7 @@ tap.test('source array with 10 objects, batching size is 4 - result should write
                     t.equal(chunk.length, 2);
                     t.end();
                     return;
-                } 
+                }
 
                 t.equal(chunk.length, 4);
                 count++;
@@ -57,31 +57,6 @@ tap.test('source array with 10 objects, batching size is 4 - result should write
 
 });
 
-
-
-tap.test('source array with 10 objects, batching size is 4 - result should write 3 arrays', (t) => {
-
-    var count = 0;
-
-    sourceStream(sourceArray)
-        .pipe(batch(4))
-        .pipe(new stream.Writable({
-            objectMode : true,
-            write: function(chunk, encoding, next) {
-
-                if (count === 2) {
-                    t.equal(chunk.length, 2);
-                    t.end();
-                    return;
-                } 
-
-                t.equal(chunk.length, 4);
-                count++;
-                next()
-            }
-        }));
-
-});
 
 
 
@@ -102,11 +77,48 @@ tap.test('transform function appended - result should be transformed', (t) => {
                 if (count === 9) {
                     t.end();
                     return;
-                } 
+                }
 
                 count++;
                 next()
             }
         }));
+
+});
+
+
+
+tap.test('source array with 8 objects, batching size is 4 - result should write 2 arrays with 4 items each', (t) => {
+
+    var count = 0;
+    var sourceArray8 = [
+        {id:0},
+        {id:1},
+        {id:2},
+        {id:3},
+        {id:4},
+        {id:5},
+        {id:6},
+        {id:7}
+    ];
+
+    var writeStream = new stream.Writable({
+        objectMode : true,
+        write: function(chunk, encoding, next) {
+            t.equal(chunk.length, 4);
+            count++;
+
+            next()
+        }
+    })
+
+    writeStream.on('finish', () => {
+      t.equal(count, 2);
+      t.end();
+    })
+
+    sourceStream(sourceArray8)
+        .pipe(batch(4))
+        .pipe(writeStream);
 
 });
