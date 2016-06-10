@@ -37,7 +37,7 @@
     "readable-stream": "2.1.4"
   },
   "devDependencies": {
-    "eslint": "2.11.1",
+    "eslint": "2.12.0",
     "tap": "5.7.2"
   }
 }
