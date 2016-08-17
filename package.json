@@ -34,7 +34,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "readable-stream": "2.1.4"
+    "readable-stream": "2.1.5"
   },
   "devDependencies": {
     "eslint": "2.13.1",
