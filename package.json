@@ -26,9 +26,6 @@
       "email": "post@trygve-lie.com"
     }
   ],
-  "engines": {
-    "node": "4.x"
-  },
   "bugs": {
     "url": "https://github.com/trygve-lie/through-batch/issues"
   },
