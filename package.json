@@ -31,10 +31,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "readable-stream": "2.1.5"
+    "readable-stream": "2.2.2"
   },
   "devDependencies": {
-    "eslint": "3.12.1",
+    "eslint": "3.13.0",
     "tap": "9.0.2"
   }
 }
