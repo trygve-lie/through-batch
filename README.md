@@ -1,6 +1,6 @@
 # through-batch
 
-[![Dependencies](https://img.shields.io/david/trygve-lie/through-batch.svg?style=flat-square)](https://david-dm.org/trygve-lie/through-batch)[![Build Status](http://img.shields.io/travis/trygve-lie/through-batch/master.svg?style=flat-square)](https://travis-ci.org/trygve-lie/through-batch)
+[![Dependencies](https://img.shields.io/david/trygve-lie/through-batch.svg?style=flat-square)](https://david-dm.org/trygve-lie/through-batch)[![Build Status](http://img.shields.io/travis/trygve-lie/through-batch/master.svg?style=flat-square)](https://travis-ci.org/trygve-lie/through-batch) [![Greenkeeper badge](https://badges.greenkeeper.io/trygve-lie/through-batch.svg)](https://greenkeeper.io/)
 
 
 Transform stream that buffer up object in the stream and pushes the buffers as 
